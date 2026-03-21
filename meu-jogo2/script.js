@@ -25,7 +25,7 @@ const cenas = {
 
   sala: {
     imagem: "img/sala.jpg",
-    texto: "Dudu vê Bubu de costas... ela sai correndo!",
+    texto: "Dudu vê Bubu de costas... ela percebe e sai correndo!",
     escolhas: [
       { texto: "Seguir Bubu", proxima: "decisao1" }
     ]
@@ -33,7 +33,7 @@ const cenas = {
 
   decisao1: {
     imagem: "img/rua.jpg",
-    texto: "Para onde Bubu foi?",
+    texto: "Para onde a Bubu foi?",
     escolhas: [
       { texto: "Quintal 🌿", proxima: "quintal" },
       { texto: "Rua 🏙️", proxima: "goma" },
@@ -44,7 +44,7 @@ const cenas = {
   // 🌿 CAMINHO ROMÂNTICO
   quintal: {
     imagem: "img/duque.jpg",
-    texto: "Duque diz que viu Bubu indo pro quarto...",
+    texto: "Duque diz que viu Bubu indo pro quarto da Arenosa...",
     escolhas: [
       { texto: "Insistir e ir ver o que ela está fazendo", proxima: "fim_ruim2" },
       { texto: "Fazer café ☕", proxima: "final_romantico" }
@@ -94,7 +94,7 @@ const cenas = {
 
   final_engracado: {
     imagem: "img/vergonha.jpg",
-    texto: "Bubu aparece com o suéter... Goma e Duque começam a rir 😂",
+    texto: "Bubu aparece com um suéter que ela estava fazendo pra ele e pede para usar... Goma e Duque começam a rir 😂",
     escolhas: [],
     som: "engracado.mp3"
   },
@@ -102,7 +102,7 @@ const cenas = {
   // 🌭 EVENTO
   evento: {
     imagem: "img/hotdog.jpg",
-    texto: "Dudu e Goma comem cachorro quente...",
+    texto: "Dudu e Goma comem o cachorro quente juntos...",
     escolhas: [
       { texto: "Levar um pra Bubu", proxima: "final_ruim" },
       { texto: "Não levar nada", proxima: "final_muito_ruim" }
