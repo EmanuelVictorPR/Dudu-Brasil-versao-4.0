@@ -1,0 +1,48 @@
+.jogos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* CARD PADRONIZADO */
+.jogo-card {
+  background: #6c6fbf; /* estilo parecido com Alura */
+  border-radius: 15px;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+/* HOVER */
+.jogo-card:hover {
+  transform: translateY(-5px);
+}
+
+/* THUMB FIXA */
+.jogo-card img {
+  width: 100%;
+  height: 300px; /* 🔥 TAMANHO FIXO */
+  object-fit: cover; /* corta sem distorcer */
+  display: block;
+}
+
+/* TEXTO */
+.jogo-info {
+  padding: 10px;
+  text-align: center;
+}
+
+.jogo-info h2 {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.jogo-info p {
+  font-size: 12px;
+  opacity: 0.9;
+}
+

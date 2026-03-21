@@ -1,0 +1,142 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* FUNDO */
+body {
+  background: #0f0f14;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* CONTAINER PRINCIPAL */
+.game-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative; /* 🔥 necessário */
+
+}
+
+/* IMAGEM */
+.imagem-container img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* CAIXA UI */
+.ui-box {
+  margin-top: 20px;
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+/* TEXTO */
+#texto {
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+/* ESCOLHAS */
+#escolhas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* BOTÕES */
+#escolhas button {
+  background: linear-gradient(135deg, #ff7eb3, #ff4d88);
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* HOVER */
+#escolhas button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 20px rgba(255, 77, 136, 0.4);
+}
+
+/* CLIQUE */
+#escolhas button:active {
+  transform: scale(0.98);
+}
+
+/* RESPONSIVO */
+@media (max-width: 500px) {
+  #texto {
+    font-size: 16px;
+  }
+
+  #escolhas button {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+#escolhas button:last-child {
+  background: linear-gradient(135deg, #6a5cff, #4b3fff);
+}
+
+#start-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #0f0f14;
+  color: white;
+  text-align: center;
+}
+
+#start-screen h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+#start-screen button {
+  background: linear-gradient(135deg, #ff7eb3, #ff4d88);
+  border: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#start-screen button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 77, 136, 0.4);
+}
+
+#reset-btn {
+  font-size: 12px;
+  padding: 6px 10px;
+
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.5);
+
+  text-align: center;
+  margin-bottom: 10px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#reset-btn:hover {
+  color: rgba(255,255,255,0.9);
+}
