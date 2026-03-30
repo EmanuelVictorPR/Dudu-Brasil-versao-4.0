@@ -1,0 +1,312 @@
+/* ==========================
+   🔥 BASE
+========================== */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+
+  background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
+  font-family: sans-serif;
+  color: white;
+  text-align: center;
+}
+
+/* ==========================
+   📦 CONTAINERS
+========================== */
+
+#menu, #game {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* ==========================
+   🧩 PUZZLE
+========================== */
+
+#puzzle {
+  width: min(92vw, 92vh);
+  max-width: 520px;
+
+  aspect-ratio: 1 / 1;
+
+  display: grid;
+  gap: 2px;
+  padding: 6px;
+
+  background: #0a0a12;
+  border-radius: 12px;
+
+  box-shadow:
+    0 0 20px rgba(0,0,0,0.6),
+    inset 0 0 10px rgba(255,255,255,0.05);
+}
+
+/* ==========================
+   🧩 PEÇAS
+========================== */
+
+.piece {
+  background-repeat: no-repeat;
+  cursor: grab;
+  border-radius: 6px;
+
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.6),
+    inset 0 0 8px rgba(255,255,255,0.15);
+
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+
+  touch-action: none;
+}
+
+.piece:hover {
+  transform: scale(1.05);
+}
+
+.piece:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+/* brilho */
+.piece::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.2),
+    transparent
+  );
+
+  transform: rotate(25deg);
+  opacity: 0;
+}
+
+.piece:hover::after {
+  animation: shine 0.6s;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(25deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%) rotate(25deg); opacity: 0; }
+}
+
+/* ==========================
+   🎮 BOTÕES
+========================== */
+
+button {
+  background: #6c63ff;
+  border: none;
+  color: white;
+
+  border-radius: 8px;
+  cursor: pointer;
+
+  padding: 8px 14px;
+  margin: 4px;
+
+  font-size: clamp(12px, 3vw, 16px);
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #8a84ff;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ==========================
+   ⏱ TIMER
+========================== */
+
+#timer {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* ==========================
+   🖼 HERO (MENU)
+========================== */
+
+.hero {
+  width: min(80vw, 80vh);
+  max-width: 380px;
+  aspect-ratio: 1;
+
+  position: relative;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+
+  background: radial-gradient(
+    circle,
+    transparent 55%,
+    rgba(255,255,255,0.25) 75%,
+    rgba(255,255,255,0.6)
+  );
+}
+
+/* ==========================
+   🖼 GALERIA
+========================== */
+
+.gallery {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery img {
+  width: 80px;
+  height: 80px;
+
+  object-fit: cover;
+  border-radius: 8px;
+
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  opacity: 1;
+}
+
+/* ==========================
+   🎯 NÍVEL
+========================== */
+
+.levels button {
+  background: #444;
+}
+
+.levels button.active {
+  background: #6c63ff;
+}
+
+/* ==========================
+   🎉 WIN SCREEN
+========================== */
+
+#winScreen {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.8);
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+#winScreen.show {
+  display: flex;
+}
+
+.win-box {
+  background: #1a1a2e;
+  padding: 30px;
+  border-radius: 16px;
+
+  box-shadow: 0 0 20px rgba(0,255,150,0.3);
+
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ==========================
+   📱 RESPONSIVO EXTRA
+========================== */
+
+@media (orientation: landscape) {
+  #menu {
+    flex-direction: row;
+    gap: 40px;
+  }
+}
+
+/* ==========================
+   🔒 UTIL
+========================== */
+
+.hidden {
+  display: none !important;
+}
+
+.drag-ghost {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+
+  opacity: 0.7;
+  transform: scale(1.15);
+
+  border-radius: 6px;
+}
+
+@media (orientation: landscape) {
+  #game {
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  #puzzle {
+    width: min(70vh, 500px);
+    height: min(70vh, 500px);
+  }
+}

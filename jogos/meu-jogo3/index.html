@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quebra-cabeça do Dudu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ==========================
+🟣 MENU
+========================== -->
+<div id="menu">
+
+  <div class="hero">
+    <img src="img/quebracabeca.jpg">
+  </div>
+
+  <h1>🧩 Quebra-cabeça do Dudu</h1>
+
+  <div class="menu-buttons">
+    <button onclick="goToImageSelect()">▶ Iniciar jogo</button>
+    <button onclick="toggleOptions()">⚙️ Opções</button>
+  </div>
+
+  <div id="options" class="hidden">
+    <h3>Dificuldade</h3>
+
+    <div class="levels">
+      <button onclick="setDifficulty(4, this)">Fácil</button>
+      <button onclick="setDifficulty(6, this)" class="active">Médio</button>
+      <button onclick="setDifficulty(8, this)">Difícil</button>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ==========================
+🖼 ESCOLHA DE IMAGEM
+========================== -->
+<div id="imageSelect" class="hidden">
+
+  <h2>Escolha uma imagem</h2>
+
+  <div class="gallery">
+    <img src="img/dudu1.jpg" onclick="startGameWithImage(this)">
+    <img src="img/dudu2.jpg" onclick="startGameWithImage(this)">
+    <img src="img/dudu3.jpg" onclick="startGameWithImage(this)">
+    <img src="img/dudu4.jpg" onclick="startGameWithImage(this)">
+  </div>
+
+  <button onclick="backToMenu()">⬅ Voltar</button>
+</div>
+
+
+<!-- ==========================
+🎮 JOGO
+========================== -->
+<div id="game" class="hidden">
+
+  <div id="timer">⏱ 00:00</div>
+
+  <div id="puzzle"></div>
+
+  <!-- 🔥 BOTÕES ORGANIZADOS -->
+  <div class="game-buttons">
+    <button onclick="resetGame()">🔄 Reiniciar</button>
+    <button onclick="backToMenu()">⬅ Menu</button>
+  </div>
+
+</div>
+
+
+<!-- ==========================
+🎉 VITÓRIA
+========================== -->
+<div id="winScreen">
+  <div class="win-box">
+    <h2>🎉 Parabéns!</h2>
+
+    <p id="finalTime">⏱ 00:00</p>
+    <p id="finalDifficulty">🎯 Médio</p>
+
+    <button onclick="playAgain()">🔄 Jogar novamente</button>
+    <button onclick="backToMenu()">🏠 Menu</button>
+  </div>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
