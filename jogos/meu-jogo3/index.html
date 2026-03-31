@@ -23,6 +23,7 @@
   <div class="menu-buttons">
     <button onclick="goToImageSelect()">▶ Iniciar jogo</button>
     <button onclick="toggleOptions()">⚙️ Opções</button>
+    <button onclick="openGallery()">🖼 Galeria</button>
   </div>
 
   <div id="options" class="hidden">
@@ -35,6 +36,19 @@
     </div>
   </div>
 
+</div>
+
+<div id="galleryScreen" class="hidden">
+  <h2>🏆 Galeria</h2>
+
+  <div id="galleryGrid"></div>
+
+  <button onclick="backToMenu()">⬅ Voltar</button>
+</div>
+
+<!-- 🔥 MODAL -->
+<div id="imageModal" class="hidden">
+  <img id="modalImage">
 </div>
 
 
@@ -50,6 +64,8 @@
     <img src="img/dudu2.jpg" onclick="startGameWithImage(this)">
     <img src="img/dudu3.jpg" onclick="startGameWithImage(this)">
     <img src="img/dudu4.jpg" onclick="startGameWithImage(this)">
+    <img src="img/dudu5.jpg" onclick="startGameWithImage(this)">
+    <img src="img/dudu6.jpg" onclick="startGameWithImage(this)">
   </div>
 
   <button onclick="backToMenu()">⬅ Voltar</button>
@@ -62,7 +78,9 @@
 <div id="game" class="hidden">
 
   <div id="timer">⏱ 00:00</div>
-
+<div id="referenceContainer">
+  <img id="referenceImage">
+</div>
   <div id="puzzle"></div>
 
   <!-- 🔥 BOTÕES ORGANIZADOS -->
@@ -79,14 +97,17 @@
 ========================== -->
 <div id="winScreen">
   <div class="win-box">
-    <h2>🎉 Parabéns!</h2>
+  <h2>🎉 Parabéns!</h2>
 
-    <p id="finalTime">⏱ 00:00</p>
-    <p id="finalDifficulty">🎯 Médio</p>
+  <p id="finalTime">⏱ 00:00</p>
+  <p id="finalDifficulty">🎯 Médio</p>
 
-    <button onclick="playAgain()">🔄 Jogar novamente</button>
-    <button onclick="backToMenu()">🏠 Menu</button>
-  </div>
+  <p id="unlockMessage" class="hidden"></p>
+
+  <button onclick="closeWinScreen()">👀 Ver imagem</button>
+  <button onclick="playAgain()">🔄 Jogar novamente</button>
+  <button onclick="backToMenu()">🏠 Menu</button>
+</div>
 </div>
 
 

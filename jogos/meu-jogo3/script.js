@@ -2,6 +2,14 @@
 // 🎯 ESTADO GLOBAL
 // ==========================
 const puzzle = document.getElementById("puzzle");
+const galleryImages = [
+  "img/dudu1.jpg",
+  "img/dudu2.jpg",
+  "img/dudu3.jpg",
+  "img/dudu4.jpg",
+  "img/dudu5.jpg",
+  "img/dudu6.jpg"
+];
 
 let size = 6;
 let pieces = [];
@@ -15,6 +23,9 @@ let gameFinished = false;
 let touchStartPiece = null;
 let touchCurrentTarget = null;
 let ghostPiece = null;
+let offsetX = 0;
+let offsetY = 0;
+let unlockedNow = false; // 🔥 controle global
 
 const moveSound = new Audio("sounds/move.mp3");
 moveSound.volume = 0.4;
@@ -28,12 +39,15 @@ winSound.volume = 0.5;
 // ==========================
 function goToImageSelect() {
   document.getElementById("menu").classList.add("hidden");
+  document.getElementById("galleryScreen").classList.add("hidden"); // 🔥 ESSENCIAL
   document.getElementById("imageSelect").classList.remove("hidden");
 }
 
 function backToMenu() {
   document.getElementById("menu").classList.remove("hidden");
+
   document.getElementById("imageSelect").classList.add("hidden");
+  document.getElementById("galleryScreen").classList.add("hidden"); // 🔥 IMPORTANTE
   document.getElementById("game").classList.add("hidden");
 
   document.getElementById("winScreen").classList.remove("show");
@@ -65,7 +79,7 @@ function toggleOptions() {
 // ==========================
 function startGameWithImage(img) {
   selectedImage = img.src;
-
+document.getElementById("referenceImage").src = img.src;
   gameFinished = false;
   stopTimer();
   startTimer();
@@ -182,24 +196,28 @@ function drop(e) {
 // ==========================
 function touchStart(e) {
   const touch = e.touches[0];
+  const piece = e.target;
 
-  touchStartPiece = e.target;
+  touchStartPiece = piece;
+
+  const rect = piece.getBoundingClientRect();
+
+  // 🔥 calcula offset do dedo dentro da peça
+  offsetX = touch.clientX - rect.left;
+  offsetY = touch.clientY - rect.top;
 
   // cria ghost
-  ghostPiece = e.target.cloneNode(true);
+  ghostPiece = piece.cloneNode(true);
   ghostPiece.classList.add("drag-ghost");
-
-  // pega tamanho real da peça
-  const rect = e.target.getBoundingClientRect();
 
   ghostPiece.style.width = rect.width + "px";
   ghostPiece.style.height = rect.height + "px";
 
   document.body.appendChild(ghostPiece);
 
-  // 🔥 posiciona CENTRALIZADO no dedo
-  ghostPiece.style.left = (touch.clientX - rect.width / 2) + "px";
-  ghostPiece.style.top = (touch.clientY - rect.height / 2) + "px";
+  // posição inicial
+  ghostPiece.style.left = (touch.clientX - offsetX) + "px";
+  ghostPiece.style.top = (touch.clientY - offsetY) + "px";
 }
 
 function touchMove(e) {
@@ -208,10 +226,8 @@ function touchMove(e) {
   const touch = e.touches[0];
 
   if (ghostPiece) {
-    const rect = ghostPiece.getBoundingClientRect();
-
-    ghostPiece.style.left = (touch.clientX - rect.width / 2) + "px";
-    ghostPiece.style.top = (touch.clientY - rect.height / 2) + "px";
+    ghostPiece.style.left = (touch.clientX - offsetX) + "px";
+    ghostPiece.style.top = (touch.clientY - offsetY) + "px";
   }
 
   const target = document.elementFromPoint(touch.clientX, touch.clientY);
@@ -246,6 +262,7 @@ function touchEnd() {
 // 🏆 VITÓRIA
 // ==========================
 function checkWin() {
+  puzzle.classList.add("completed");
   if (gameFinished) return;
 
   const current = [...puzzle.children];
@@ -254,15 +271,28 @@ function checkWin() {
     return piece.getAttribute("data-index") == index;
   });
 
-  if (isCorrect) {
-    gameFinished = true;
+ if (isCorrect) {
+  gameFinished = true;
 
-    stopTimer();
+  stopTimer();
 
-    const finalTime = document.getElementById("timer").textContent;
+  unlockedNow = false;
 
-    showWinScreen(finalTime);
+  if (size >= 6) {
+    const unlocked = JSON.parse(localStorage.getItem("unlocked") || "[]");
+const normalized = normalizeImagePath(selectedImage);
+
+if (size >= 6 && !unlocked.includes(normalized)) {
+  unlockImage(selectedImage);
+  unlockedNow = true;
+} else {
+  unlockedNow = false;
+}
   }
+
+  const finalTime = document.getElementById("timer").textContent;
+  showWinScreen(finalTime);
+}
 }
 
 function showWinScreen(time) {
@@ -272,17 +302,16 @@ function showWinScreen(time) {
   document.getElementById("finalDifficulty").textContent =
     `🎯 ${getDifficultyName()}`;
 
+  const msg = document.getElementById("unlockMessage");
+
+  if (unlockedNow) {
+    msg.textContent = "🏆 Nova imagem desbloqueada!";
+    msg.classList.remove("hidden");
+  } else {
+    msg.classList.add("hidden");
+  }
+
   document.getElementById("winScreen").classList.add("show");
-}
-
-function playAgain() {
-  document.getElementById("winScreen").classList.remove("show");
-
-  gameFinished = false;
-  stopTimer();
-  startTimer();
-
-  createPuzzle();
 }
 
 
@@ -340,4 +369,81 @@ function setDifficulty(newSize, btn) {
   });
 
   btn.classList.add("active");
+}
+
+function closeWinScreen() {
+  document.getElementById("winScreen").classList.remove("show");
+}
+
+function unlockImage(imgSrc) {
+  const normalized = normalizeImagePath(imgSrc);
+
+  let unlocked = JSON.parse(localStorage.getItem("unlocked") || "[]");
+
+  if (!unlocked.includes(normalized)) {
+    unlocked.push(normalized);
+    localStorage.setItem("unlocked", JSON.stringify(unlocked));
+  }
+}
+
+function openGallery() {
+  document.getElementById("menu").classList.add("hidden");
+  document.getElementById("galleryScreen").classList.remove("hidden");
+
+  renderGallery();
+}
+
+function renderGallery() {
+  const grid = document.getElementById("galleryGrid");
+  grid.innerHTML = "";
+
+  const unlocked = JSON.parse(localStorage.getItem("unlocked") || "[]");
+
+galleryImages.forEach(src => {
+  const normalized = normalizeImagePath(src);
+
+  const img = document.createElement("img");
+  img.src = src;
+  img.classList.add("gallery-item");
+
+  if (unlocked.includes(normalized)) {
+    img.classList.add("unlocked");
+    img.onclick = () => openImageModal(src);
+  } else {
+    img.classList.add("locked");
+  }
+
+  grid.appendChild(img);
+});
+}
+
+function openImageModal(src) {
+  const modal = document.getElementById("imageModal");
+  const img = document.getElementById("modalImage");
+
+  img.src = src;
+  modal.classList.remove("hidden");
+}
+
+document.getElementById("imageModal").onclick = () => {
+  document.getElementById("imageModal").classList.add("hidden");
+};
+
+function normalizeImagePath(src) {
+  const parts = src.split("/");
+  return "img/" + parts[parts.length - 1];
+}
+
+function playAgain() {
+  document.getElementById("winScreen").classList.remove("show");
+
+  if (!selectedImage) return;
+
+  gameFinished = false;
+  puzzle.classList.remove("completed");
+
+  stopTimer();
+  startTimer();
+
+  createPuzzle();
 }

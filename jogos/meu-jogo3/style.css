@@ -6,7 +6,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 
   background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
   font-family: sans-serif;
@@ -29,6 +29,10 @@ html, body {
   gap: 10px;
   padding: 10px;
   box-sizing: border-box;
+}
+
+#game {
+  position: relative;
 }
 
 /* ==========================
@@ -66,11 +70,12 @@ html, body {
     0 2px 6px rgba(0,0,0,0.6),
     inset 0 0 8px rgba(255,255,255,0.15);
 
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
   overflow: hidden;
 
   touch-action: none;
+  will-change: transform;
 }
 
 .piece:hover {
@@ -118,7 +123,7 @@ html, body {
 ========================== */
 
 button {
-  background: #6c63ff;
+  background: linear-gradient(135deg, #6c63ff, #8a84ff);
   border: none;
   color: white;
 
@@ -131,11 +136,10 @@ button {
   font-size: clamp(12px, 3vw, 16px);
 
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-  transition: 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
-  background: #8a84ff;
   transform: translateY(-2px);
 }
 
@@ -157,8 +161,7 @@ button:active {
 ========================== */
 
 .hero {
-  width: min(80vw, 80vh);
-  max-width: 380px;
+  width: min(90vw, 400px);
   aspect-ratio: 1;
 
   position: relative;
@@ -269,17 +272,6 @@ button:active {
 }
 
 /* ==========================
-   📱 RESPONSIVO EXTRA
-========================== */
-
-@media (orientation: landscape) {
-  #menu {
-    flex-direction: row;
-    gap: 40px;
-  }
-}
-
-/* ==========================
    🔒 UTIL
 ========================== */
 
@@ -292,21 +284,183 @@ button:active {
   pointer-events: none;
   z-index: 9999;
 
-  opacity: 0.7;
-  transform: scale(1.15);
+  opacity: 0.8;
+  transform: scale(1.2);
 
-  border-radius: 6px;
+  transition: none;
 }
 
-@media (orientation: landscape) {
-  #game {
+/* ==========================
+   📌 REFERÊNCIA
+========================== */
+
+#referenceContainer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 80px;
+  height: 80px;
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  opacity: 0.9;
+
+  transition: 0.2s;
+}
+
+#referenceContainer:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+#referenceImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================
+   🎯 COMPLETED
+========================== */
+
+#puzzle.completed {
+  box-shadow:
+    0 0 25px rgba(0,255,150,0.6),
+    0 0 50px rgba(0,255,150,0.2);
+}
+
+/* ==========================
+   🖼 GALERIA GRID
+========================== */
+
+#galleryGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.gallery-item {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  position: relative;
+}
+
+.gallery-item.unlocked {
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(0,255,150,0.5);
+}
+
+.gallery-item.locked {
+  filter: grayscale(100%) brightness(0.6);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.gallery-item.locked::after {
+  content: "🔒";
+  position: absolute;
+  font-size: 22px;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  text-shadow: 0 0 10px black;
+}
+
+/* ==========================
+   🔥 MODAL
+========================== */
+
+#imageModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+#imageModal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
+/* ==========================
+   🏆 UNLOCK MESSAGE
+========================== */
+
+#unlockMessage {
+  animation: pop 0.4s ease;
+}
+
+/* ==========================
+   💻 DESKTOP
+========================== */
+
+@media (min-width: 1024px) {
+  #menu {
+    flex-direction: column;
     justify-content: center;
-    height: 100vh;
-    overflow: hidden;
+    align-items: center;
+    text-align: center;
+  }
+
+  .menu-buttons {
+    justify-content: center;
+  }
+
+  .menu-content {
+    align-items: center;
+  }
+}
+
+/* 📱 celular horizontal */
+@media (max-height: 500px) and (orientation: landscape) {
+
+  .hero {
+    width: min(40vh, 220px);
+  }
+
+  #menu {
+    gap: 5px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  .menu-buttons {
+    transform: scale(0.9);
+  }
+
+  #game {
+    justify-content: flex-start;
+    padding-top: 5px;
+    gap: 5px;
   }
 
   #puzzle {
-    width: min(70vh, 500px);
-    height: min(70vh, 500px);
+    width: min(60vh, 400px);
+  }
+
+  #timer {
+    font-size: 14px;
+  }
+
+  #game button {
+    transform: scale(0.9);
   }
 }
