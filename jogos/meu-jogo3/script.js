@@ -295,6 +295,8 @@ if (size >= 6 && !unlocked.includes(normalized)) {
 }
 }
 
+
+
 function showWinScreen(time) {
   winSound.play();
 
@@ -425,9 +427,13 @@ function openImageModal(src) {
   modal.classList.remove("hidden");
 }
 
-document.getElementById("imageModal").onclick = () => {
-  document.getElementById("imageModal").classList.add("hidden");
-};
+const modal = document.getElementById("imageModal");
+
+if (modal) {
+  modal.onclick = () => {
+    modal.classList.add("hidden");
+  };
+}
 
 function normalizeImagePath(src) {
   const parts = src.split("/");
