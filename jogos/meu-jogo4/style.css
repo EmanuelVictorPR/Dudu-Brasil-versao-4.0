@@ -193,7 +193,8 @@ html, body {
 ========================== */
 
 /* BOT - ESQUERDA */
-#botCollection {
+/* PLAYER - ESQUERDA */
+#playerCollection {
   position: absolute;
   top: 120px;
   left: 10px;
@@ -209,8 +210,8 @@ html, body {
   pointer-events: none;
 }
 
-/* PLAYER - DIREITA */
-#playerCollection {
+/* BOT - DIREITA */
+#botCollection {
   position: absolute;
   top: 120px;
   right: 10px;
