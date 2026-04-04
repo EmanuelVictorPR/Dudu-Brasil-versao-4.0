@@ -1,0 +1,453 @@
+/* ==========================
+   🔥 BASE
+========================== */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+
+  background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
+  font-family: sans-serif;
+  color: white;
+}
+
+/* ==========================
+   📦 TELAS
+========================== */
+
+.screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================
+   🎮 GAME (ROMÂNTICO ATIVO)
+========================== */
+
+#game.romantico {
+  background: radial-gradient(circle at top, #2a0f1f, #0f0f1a);
+}
+
+/* ==========================
+   🟣 MENU (SEM VERMELHO)
+========================== */
+
+#step1 img {
+  width: clamp(180px, 55vw, 280px);
+  height: auto;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+#step1 button {
+  display: inline-block;
+  max-width: 85vw;
+  padding: 10px 16px;
+  white-space: nowrap;
+}
+
+/* ==========================
+   🔝 TOP BAR (BONITO)
+========================== */
+
+.top-bar {
+  width: 100%;
+  max-width: 700px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 14px;
+  box-sizing: border-box;
+
+  z-index: 3;
+}
+
+.score-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  font-size: 13px;
+  font-weight: 500;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.score-box span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.score-box:first-child {
+  background: linear-gradient(135deg, rgba(255,105,180,0.25), rgba(255,255,255,0.05));
+}
+
+.score-box:last-child {
+  background: linear-gradient(135deg, rgba(120,150,255,0.25), rgba(255,255,255,0.05));
+}
+
+/* ==========================
+   🤖 BOT
+========================== */
+
+.top-area {
+  width: 100%;
+  max-width: 700px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 10px;
+}
+
+#botAvatar {
+  width: 70px;
+}
+
+/* ==========================
+   🧠 BOARD
+========================== */
+
+#board {
+  display: grid;
+  gap: 8px;
+
+  width: 100%;
+  max-width: 900px; /* 🔥 aumenta área no PC */
+
+  height: calc(100vh - 220px);
+
+  padding: 10px;
+  box-sizing: border-box;
+
+  margin: 0 auto;
+}
+
+/* ==========================
+   🃏 CARTAS
+========================== */
+
+.card {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 12px;
+  overflow: hidden;
+
+  background-image: url("img/cartas/fundo.png");
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (orientation: portrait) {
+  .card {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+@media (orientation: landscape) {
+  .card {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hiddenCard img {
+  display: none;
+}
+
+/* ==========================
+   🎯 MINIATURAS (COLUNAS)
+========================== */
+
+/* BOT - ESQUERDA */
+#botCollection {
+  position: absolute;
+  top: 120px;
+  left: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  max-height: 70vh;
+  overflow: hidden;
+
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* PLAYER - DIREITA */
+#playerCollection {
+  position: absolute;
+  top: 120px;
+  right: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  max-height: 70vh;
+  overflow: hidden;
+
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.mini-pair {
+  display: flex;
+  gap: 2px;
+}
+
+.mini-pair img {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+/* ==========================
+   🎮 BOTÕES
+========================== */
+
+button {
+  background: linear-gradient(135deg, #6c63ff, #8a84ff);
+  border: none;
+  color: white;
+
+  border-radius: 8px;
+  cursor: pointer;
+
+  padding: 10px 14px;
+  font-size: 14px;
+
+  max-width: 90vw;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ==========================
+   📋 MENU BUTTONS
+========================== */
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+/* ==========================
+   ⬅ VOLTAR
+========================== */
+
+.back-btn {
+  margin-top: 18px;
+
+  background: transparent !important;
+  color: #bbb !important;
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  box-shadow: none;
+}
+
+/* ==========================
+   🔄 RESET
+========================== */
+
+.floating-reset {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+  z-index: 5;
+}
+
+/* ==========================
+   ⏭ SKIP
+========================== */
+
+#skipBtn {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+
+  z-index: 5;
+}
+
+/* ==========================
+   🎉 WIN
+========================== */
+
+#winScreen {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.8);
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+#winScreen.show {
+  display: flex;
+}
+
+.win-box {
+  background: #1a1a2e;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+/* ==========================
+   📱 MOBILE
+========================== */
+
+@media (max-width: 768px) {
+
+  #board {
+    max-width: 95vw;
+    gap: 4px;
+  }
+
+  #botAvatar {
+    width: 60px;
+  }
+
+  .score-box {
+    font-size: 12px;
+  }
+
+}
+
+/* ==========================
+   🔥 FIX NOVO JOGO (HORIZONTAL)
+========================== */
+
+#step1 {
+  justify-content: flex-start; /* 🔥 não centraliza verticalmente */
+  padding-top: 20px;
+  overflow: hidden;
+}
+
+#step1 h1 {
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* imagem menor no horizontal */
+@media (orientation: landscape) {
+  #step1 img {
+    width: 35vh; /* 🔥 usa altura da tela, não largura */
+    max-width: 220px;
+  }
+}
+
+/* botão sempre visível */
+#step1 button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+
+  #board {
+    max-width: 1100px; /* 🔥 usa mais espaço ainda */
+    height: calc(100vh - 180px); /* 🔥 ganha altura */
+  }
+
+}
+
+/* ==========================
+   📱 CENTRALIZA MENU NO VERTICAL
+========================== */
+
+@media (orientation: portrait) {
+  #step1 {
+    justify-content: center; /* 🔥 centraliza vertical */
+  }
+}
+
+/* ==========================
+   📱 HORIZONTAL CONTINUA NO TOPO
+========================== */
+
+@media (orientation: landscape) {
+  #step1 {
+    justify-content: flex-start; /* 🔥 evita quebrar layout */
+    padding-top: 20px;
+  }
+}
+
+/* ==========================
+   💻 DESKTOP CENTRALIZADO
+========================== */
+
+@media (min-width: 1024px) {
+  #step1 {
+    justify-content: center;
+  }
+}
+
+/* ==========================
+   📱 VERTICAL CENTRALIZADO
+========================== */
+
+@media (orientation: portrait) {
+  #step1 {
+    justify-content: center;
+  }
+}
+
+/* ==========================
+   📱 HORIZONTAL (MOBILE) NO TOPO
+========================== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+  #step1 {
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+}

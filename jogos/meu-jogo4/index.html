@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💖 Jogo da Memória</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ==========================
+🟣 MENU
+========================== -->
+<div id="step1" class="screen">
+
+  <div class="hero">
+    <img src="img/memoria.png">
+  </div>
+
+  <h1>💖 Jogo da Memória</h1>
+  <button onclick="nextStep(2)">▶ Novo Jogo</button>
+</div>
+
+<!-- ==========================
+🎨 TEMA
+========================== -->
+<div id="step2" class="screen hidden">
+
+  <h2>Escolha o tema</h2>
+
+  <div class="menu-buttons">
+    <button onclick="selectTheme('romantico')">💖 Romântico</button>
+  </div>
+
+  <button class="back-btn" onclick="prevStep(1)">⬅ Voltar</button>
+
+</div>
+
+<!-- ==========================
+🤖 BOT
+========================== -->
+<div id="step3" class="screen hidden">
+  <h2>Quem você desafia?</h2>
+
+  <div onclick="selectBot('dudu')">
+    <img src="img/personagens/dudu_normal.png" width="80">
+    <p>Dudu</p>
+  </div>
+
+  <div onclick="selectBot('bubu')">
+    <img src="img/personagens/bubu_normal.png" width="80">
+    <p>Bubu</p>
+  </div>
+
+  <button onclick="prevStep(2)">⬅ Voltar</button>
+</div>
+
+<!-- ==========================
+🎯 DIFICULDADE
+========================== -->
+<div id="step4" class="screen hidden">
+
+  <h2>Dificuldade</h2>
+
+  <div class="menu-buttons">
+    <button onclick="startGame('easy')">Fácil</button>
+    <button onclick="startGame('medium')">Médio</button>
+    <button onclick="startGame('hard')">Difícil</button>
+  </div>
+
+  <!-- 🔥 VOLTAR SEPARADO -->
+  <button class="back-btn" onclick="prevStep(3)">⬅ Voltar</button>
+
+</div>
+
+<!-- ==========================
+🎮 GAME
+========================== -->
+<div id="game" class="screen hidden">
+
+  <!-- 🔝 TOP -->
+  <div class="top-bar">
+    <div class="score-box">Você <span id="playerScore">0</span></div>
+    <div class="score-box"><span id="botName">Bot</span> <span id="botScore">0</span></div>
+  </div>
+
+  <!-- 🤖 BOT (CAMADA SUPERIOR CONTROLADA) -->
+  <div class="top-area">
+
+  <div id="botLayer">
+    <img id="botAvatar">
+  </div>
+
+</div>
+
+  <!-- 🧠 BOARD (CAMADA BASE) -->
+  <div id="board"></div>
+
+  <!-- 🎯 OVERLAYS (SEPARADOS DO BOT) -->
+  <div id="overlayLayer">
+
+    <div id="botCollection" class="floating-collection"></div>
+
+    <div id="playerCollection" class="floating-collection"></div>
+
+  </div>
+
+  <!-- ⏭ -->
+  <button id="skipBtn" onclick="skipReveal()">⏭</button>
+
+  <!-- 🔄 -->
+  <button class="reset-btn floating-reset" onclick="resetGame()">🔄</button>
+
+</div>
+
+<!-- ==========================
+🏆 WIN
+========================== -->
+<div id="winScreen">
+  <div class="win-box">
+    <h2 id="winnerText"></h2>
+    <button onclick="resetGame()">🔄 Jogar novamente</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
