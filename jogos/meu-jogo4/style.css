@@ -18,7 +18,7 @@ html, body {
 ========================== */
 
 .screen {
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,6 +35,13 @@ html, body {
 /* ==========================
    🎮 GAME (ROMÂNTICO ATIVO)
 ========================== */
+
+#game {
+  height: 100dvh;
+}
+#board {
+  height: calc(100dvh - 220px);
+}
 
 #game.romantico {
   background: radial-gradient(circle at top, #2a0f1f, #0f0f1a);
