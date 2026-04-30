@@ -8,7 +8,13 @@ const galleryImages = [
   "img/dudu3.jpg",
   "img/dudu4.jpg",
   "img/dudu5.jpg",
-  "img/dudu6.jpg"
+  "img/dudu6.jpg",
+   "img/sunset.png",
+   "img/lagoa.png",
+   "img/pizzaria.png",
+   "img/papagaio.png",
+   "img/super.png",
+   "img/queda.png",
 ];
 
 let size = 6;

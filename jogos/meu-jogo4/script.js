@@ -194,13 +194,25 @@ function setupBoard(pairCount) {
 
   board.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
 
-  let values = [];
+ const TOTAL_IMAGES = 28; // total de imagens que você tem
 
-  for (let i = 1; i <= pairCount; i++) {
-    values.push(i, i);
-  }
+// cria lista [1..28]
+let allImages = Array.from({ length: TOTAL_IMAGES }, (_, i) => i + 1);
 
-  values.sort(() => Math.random() - 0.5);
+// embaralha todas
+allImages.sort(() => Math.random() - 0.5);
+
+// pega só o necessário
+let selected = allImages.slice(0, pairCount);
+
+// duplica pares
+let values = [];
+selected.forEach(v => {
+  values.push(v, v);
+});
+
+// embaralha novamente
+values.sort(() => Math.random() - 0.5);
 
   board.innerHTML = "";
   cards = [];

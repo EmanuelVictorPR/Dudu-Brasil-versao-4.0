@@ -1,0 +1,381 @@
+/* ==========================================
+   RESET
+========================================== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#000;
+}
+
+/* ==========================================
+   CANVAS
+========================================== */
+#gameCanvas{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  display:block;
+  background:#000;
+  z-index:1;
+}
+
+/* ==========================================
+   HUD
+========================================== */
+#lap,
+#speed{
+  position:fixed;
+  top:18px;
+  z-index:20;
+
+  padding:10px 16px;
+  border-radius:14px;
+
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(6px);
+
+  color:#fff;
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:.4px;
+
+  user-select:none;
+}
+
+#lap{
+  left:18px;
+}
+
+#speed{
+  right:18px;
+  min-width:62px;
+  text-align:center;
+  color:#00ff88;
+}
+
+/* ==========================================
+   CONTROLES
+========================================== */
+.controls-left,
+.controls-right{
+  position:fixed;
+  bottom:20px;
+  z-index:30;
+
+  display:flex;
+  gap:12px;
+}
+
+.controls-left{
+  left:18px;
+}
+
+.controls-right{
+  right:18px;
+}
+
+button{
+  border:none;
+  outline:none;
+  cursor:pointer;
+  user-select:none;
+  transition:.08s ease;
+}
+
+button:active{
+  transform:scale(.96);
+}
+
+/* Setas */
+.control-btn{
+  width:58px;
+  height:58px;
+  border-radius:16px;
+
+  background:rgba(255,255,255,.18);
+  color:#fff;
+
+  font-size:24px;
+  font-weight:900;
+
+  backdrop-filter:blur(6px);
+}
+
+/* Acelerar */
+.accel-btn{
+  min-width:130px;
+  height:58px;
+  padding:0 24px;
+
+  border-radius:16px;
+
+  background:#22c55e;
+  color:#fff;
+
+  font-size:18px;
+  font-weight:900;
+
+  box-shadow:0 8px 22px rgba(34,197,94,.28);
+}
+
+/* Freio */
+.brake-btn{
+  min-width:95px;
+  height:58px;
+  padding:0 22px;
+
+  border-radius:16px;
+
+  background:#dc2626;
+  color:#fff;
+
+  font-size:18px;
+  font-weight:900;
+
+  box-shadow:0 8px 22px rgba(220,38,38,.28);
+}
+
+/* ==========================================
+   MENU / WIN SCREEN
+========================================== */
+#menu,
+#winScreen{
+  position:fixed;
+  inset:0;
+  z-index:100;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(0,0,0,.72);
+}
+
+.hidden{
+  display:none !important;
+}
+
+.panel{
+  width:min(92vw,460px);
+
+  padding:34px 26px;
+
+  border-radius:24px;
+
+  background:#050505;
+
+  border:2px solid #00ff88;
+
+  box-shadow:
+    0 0 12px rgba(0,255,136,.9),
+    0 0 32px rgba(0,255,136,.45),
+    inset 0 0 20px rgba(0,255,136,.08);
+
+  text-align:center;
+}
+
+.panel h1{
+  color:#00ff88;
+  font-size:34px;
+  font-weight:900;
+  margin-bottom:12px;
+
+  text-shadow:0 0 10px rgba(0,255,136,.45);
+}
+
+.panel p{
+  color:#d7d7d7;
+  font-size:16px;
+  margin-bottom:24px;
+  opacity:.92;
+}
+
+/* ==========================================
+   DIFICULDADE
+========================================== */
+.difficulty-box{
+  margin-bottom:18px;
+  text-align:left;
+}
+
+.difficulty-box label{
+  display:block;
+  color:#fff;
+  font-size:15px;
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+#difficulty{
+  width:100%;
+  height:48px;
+
+  border:none;
+  outline:none;
+
+  border-radius:14px;
+
+  padding:0 14px;
+
+  background:#161616;
+  color:#fff;
+
+  font-size:16px;
+  font-weight:700;
+
+  border:1px solid rgba(255,255,255,.12);
+}
+
+/* ==========================================
+   BOTÃO MENU
+========================================== */
+.menu-btn{
+  width:100%;
+  height:58px;
+
+  margin-top:12px;
+
+  border-radius:16px;
+
+  background:#00e676;
+  color:#000;
+
+  font-size:21px;
+  font-weight:900;
+
+  box-shadow:0 8px 24px rgba(0,230,118,.35);
+}
+
+.menu-btn:active{
+  transform:scale(.985);
+}
+
+/* ==========================================
+   ROTATE WARNING
+========================================== */
+#rotateWarning{
+  position:fixed;
+  inset:0;
+  z-index:999;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  padding:30px;
+
+  background:#000;
+  color:#fff;
+
+  font-size:30px;
+  font-weight:900;
+  line-height:1.4;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+@media (max-width:900px){
+
+  #lap,
+  #speed{
+    top:14px;
+    padding:8px 12px;
+    font-size:16px;
+    border-radius:12px;
+  }
+
+  #lap{
+    left:14px;
+  }
+
+  #speed{
+    right:14px;
+    min-width:54px;
+  }
+
+  .controls-left,
+  .controls-right{
+    bottom:14px;
+    gap:10px;
+  }
+
+  .controls-left{
+    left:14px;
+  }
+
+  .controls-right{
+    right:14px;
+  }
+
+  .control-btn{
+    width:54px;
+    height:54px;
+    font-size:22px;
+    border-radius:14px;
+  }
+
+  .accel-btn{
+    min-width:118px;
+    height:54px;
+    font-size:17px;
+    border-radius:14px;
+  }
+
+  .brake-btn{
+    min-width:88px;
+    height:54px;
+    font-size:17px;
+    border-radius:14px;
+  }
+
+  .panel{
+    width:min(92vw,390px);
+    padding:28px 20px;
+    border-radius:20px;
+  }
+
+  .panel h1{
+    font-size:28px;
+  }
+
+  .menu-btn{
+    height:54px;
+    font-size:19px;
+    border-radius:14px;
+  }
+
+  #difficulty{
+    height:44px;
+    font-size:15px;
+  }
+}
+
+/* ==========================================
+   CELULAR VERTICAL
+========================================== */
+@media (orientation:portrait){
+
+  #rotateWarning{
+    display:flex;
+  }
+
+  #gameCanvas,
+  #lap,
+  #speed,
+  .controls-left,
+  .controls-right{
+    display:none !important;
+  }
+}

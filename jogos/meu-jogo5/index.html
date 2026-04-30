@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dudu & Bubu Racing</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- AVISO CELULAR VERTICAL -->
+  <div id="rotateWarning">
+    🔄 Vire o celular para jogar na horizontal
+  </div>
+
+  <!-- MENU INICIAL -->
+  <div id="menu">
+    <div class="panel">
+      <h1>🏁 Dudu & Bubu Racing</h1>
+      <p>Prepare-se para 3 voltas cheias de curvas!</p>
+
+      <!-- DIFICULDADE -->
+      <div class="difficulty-box">
+        <label for="difficulty">Dificuldade</label>
+        <select id="difficulty">
+          <option value="easy">🐼 Fácil</option>
+          <option value="normal" selected>🏁 Normal</option>
+          <option value="hard">🔥 Difícil</option>
+        </select>
+      </div>
+
+      <button id="btnStart" class="menu-btn">
+        Novo Jogo
+      </button>
+    </div>
+  </div>
+
+  <!-- TELA DE VITÓRIA -->
+  <div id="winScreen" class="hidden">
+    <div class="panel">
+      <h1>🏆 Você venceu!</h1>
+      <p>Parabéns piloto!</p>
+
+      <button id="btnRestart" class="menu-btn">
+        Jogar Novamente
+      </button>
+    </div>
+  </div>
+
+  <!-- HUD -->
+  <div id="lap">Lap 1/3</div>
+  <div id="speed">0</div>
+
+  <!-- CANVAS -->
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- CONTROLES ESQUERDA -->
+  <div class="controls-left">
+    <button id="btnLeft" class="control-btn">←</button>
+    <button id="btnRight" class="control-btn">→</button>
+  </div>
+
+  <!-- CONTROLES DIREITA -->
+  <div class="controls-right">
+    <button id="btnAccelerate" class="accel-btn">
+      Acelerar
+    </button>
+
+    <button id="btnBrake" class="brake-btn">
+      Freio
+    </button>
+  </div>
+
+  <script src="game.js"></script>
+
+</body>
+</html>
