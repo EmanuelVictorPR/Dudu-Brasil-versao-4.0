@@ -5,17 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dudu Brasil</title>
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/global.css">
+<link rel="stylesheet" href="style/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   
 </head>
+
+
 <body>
     
  <header class="header">
   <nav class="menu">
     <a href="index.html">Início</a>
     <a href="exposition.html">Exposição</a>
-    <a href="gibi.html">Quadrinhos</a>
+    <a href="quadrinhos/index.html">Quadrinhos</a>
     <a href="sobre.html">Sobre</a>
     <a href="jogos.html">Jogos</a>
   </nav>
@@ -27,11 +30,20 @@
         <h1>Bem-vindo ao Mundo do Dudu!</h1>
         <p>Explore quadrinhos, desenhos e muita diversão. Dê uma olhada nas nossas exposições e aventuras do Dudu e da Bubu!</p>
       </div>
-
-      <div class="intro-img">
-        <img src="img/dudu.png" alt="Dudu acenando">
-      </div>
     </section>
+
+    <div class="personagens">
+  <div class="char">
+    <img id="dudu" src="img/dudu.png" alt="Dudu">
+  </div>
+
+  <div class="char">
+    <img id="bubu" src="img/bubu.png" alt="Bubu">
+  </div>
+</div>
+
+<audio id="somDudu" src="audio/dudu.mp3"></audio>
+<audio id="somBubu" src="audio/bubu.mp3"></audio>
 
     <section class="home-links">
       <h2>Acesse rapidamente</h2>
@@ -48,6 +60,34 @@
       </div>
     </section>
   </main>
+
+  <script>
+  const dudu = document.getElementById("dudu");
+  const bubu = document.getElementById("bubu");
+
+  const somDudu = document.getElementById("somDudu");
+  const somBubu = document.getElementById("somBubu");
+
+  dudu.addEventListener("click", () => {
+    dudu.src = "img/dudu.gif";
+    somDudu.currentTime = 0;
+    somDudu.play();
+
+    setTimeout(() => {
+      dudu.src = "img/dudu.png";
+    }, 2000);
+  });
+
+  bubu.addEventListener("click", () => {
+    bubu.src = "img/bubu.gif";
+    somBubu.currentTime = 0;
+    somBubu.play();
+
+    setTimeout(() => {
+      bubu.src = "img/bubu.png";
+    }, 2000);
+  });
+</script>
 </body>
 
 

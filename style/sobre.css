@@ -1,126 +1,42 @@
-/* ================= VARIÁVEIS ================= */
-:root {
-  --bg: #f7f4ef;
-  --card: #ffffff;
-  --text: #2b2b2b;
-  --muted: #777;
-  --border: rgba(0,0,0,0.08);
-
-  --ouro: #d4af37;
-  --prata: #c0c0c0;
-  --bronze: #cd7f32;
-}
-
-/* ================= RESET ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* ================= BASE ================= */
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.6;
-}
-
-/* ================= HEADER ================= */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-
-  background: rgba(15, 15, 15, 0.92);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-/* ================= NAV ================= */
-.menu {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 10px 16px;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-}
-
-.menu a {
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  padding: 6px 0;
-  position: relative;
-}
-
-.menu a.ativo,
-.menu a:hover {
-  color: var(--text);
-}
-
-.menu a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 1px;
-  background: var(--text);
-  transition: width 0.25s ease;
-}
-
-.menu a:hover::after {
-  width: 100%;
-}
-
-/* ================= MAIN ================= */
-main {
+/* ========================== */
+/* 📦 CONTAINER */
+/* ========================== */
+.sobre {
   max-width: 720px;
-  margin: 64px auto;
+  margin: 60px auto;
   padding: 0 16px;
 }
 
-/* ================= INTRO ================= */
+/* ========================== */
+/* 🧾 INTRO */
+/* ========================== */
 .intro h1 {
   font-size: 2rem;
   margin-bottom: 12px;
+  text-align: center;
 }
 
 .manifesto {
   font-size: 1.1rem;
   color: var(--muted);
   margin-bottom: 32px;
+  text-align: center;
 }
 
-.intro div {
-  display: flex;
-  justify-content: center;
-  margin: 24px 0; /* opcional: dá um espaço acima e abaixo da imagem */
-}
-
-.intro div img {
-  max-width: 100%; /* mantém responsivo */
-  height: auto;    /* mantém proporção */
-  display: block;
-}
-
-/* ================= CONTEÚDO ================= */
+/* ========================== */
+/* 📖 CONTEÚDO */
+/* ========================== */
 .conteudo {
   margin: 32px 0;
 }
 
 .conteudo p {
   margin-bottom: 16px;
-  color: var(--text);
 }
 
-/* ================= DESTAQUES ================= */
+/* ========================== */
+/* ⭐ DESTAQUES */
+/* ========================== */
 .destaques {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -129,7 +45,7 @@ main {
 }
 
 .bloco {
-  border-left: 2px solid rgba(0,0,0,0.12);
+  border-left: 2px solid var(--muted);
   padding-left: 16px;
 }
 
@@ -143,7 +59,9 @@ main {
   color: var(--muted);
 }
 
-/* ================= FECHAMENTO ================= */
+/* ========================== */
+/* 🔚 FECHAMENTO */
+/* ========================== */
 .fechamento {
   margin-top: 48px;
   text-align: center;
@@ -151,8 +69,11 @@ main {
   color: var(--muted);
 }
 
-/* ================= MOBILE ================= */
+/* ========================== */
+/* 📱 MOBILE */
+/* ========================== */
 @media (max-width: 600px) {
+
   .intro h1 {
     font-size: 1.6rem;
   }
@@ -163,10 +84,5 @@ main {
 
   .destaques {
     gap: 16px;
-  }
-
-  .intro div img {
-    width: 90%; /* ocupa até 90% da largura da tela */
-    max-width: none; /* ignora o max-width do desktop */
   }
 }

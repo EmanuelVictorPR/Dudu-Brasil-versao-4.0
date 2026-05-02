@@ -1,114 +1,10 @@
-/* ================= GLOBAL ================= */
-:root {
-  --bg: #f9f8dc;
-  --card: hsla(42, 58%, 78%, 0.949);
-  --text: #000000;
-  --muted: #1b1000;
-  --border: rgba(0, 0, 0, 0.08);
-
-  --ouro: #d4af37;
-  --prata: #c0c0c0;
-  --bronze: #cd7f32;
-
-  --accent: #f0f0f0; /* usado em menus, sublinhado */
-}
-
-/* ================= RESET ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.5;
-}
-
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* ================= HEADER / MENU ================= */
-.header {
-  position: sticky;
-  top: 0;
-  background: rgba(188, 157, 103, 0.95);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(133, 41, 41, 0.08);
-  z-index: 1000;
-}
-
-.menu {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 10px 16px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.menu a {
-  position: relative;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 6px 0;
-  transition: color 0.2s ease;
-}
-
-.menu a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  transition: width 0.25s ease;
-}
-
-.menu a:hover,
-.menu a:focus,
-.menu a:active {
-  color: #fff;
-}
-
-.menu a:hover::after,
-.menu a:focus::after,
-.menu a:active::after {
-  width: 100%;
-}
-
-/* ================= CONTEÚDO ================= */
-main {
-  max-width: 1100px;
-  margin: 48px auto;
-  padding: 0 16px;
-}
-
+/* ========================== */
+/* 🖼️ TÍTULOS */
+/* ========================== */
 h1 {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 12px;
-}
-
-h2 {
-  font-size: 1.3rem;
-  color: var(--muted);
-  margin-bottom: 16px;
 }
 
 .subtitulo {
@@ -117,7 +13,9 @@ h2 {
   margin-bottom: 40px;
 }
 
-/* ================= PÓDIO ================= */
+/* ========================== */
+/* 🏆 PÓDIO */
+/* ========================== */
 .podio {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -136,12 +34,12 @@ h2 {
 
 .podio .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .podio .card img {
   width: 100%;
-  height: 260px; /* FIXO para podium */
+  height: 260px;
   object-fit: cover;
   cursor: zoom-in;
   display: block;
@@ -162,12 +60,16 @@ h2 {
   color: var(--muted);
 }
 
-/* Medalhas */
-.ouro { border: 3px solid var(--ouro); }
-.prata { border: 3px solid var(--prata); }
-.bronze { border: 3px solid var(--bronze); }
+/* ========================== */
+/* 🥇 MEDALHAS */
+/* ========================== */
+.ouro { border: 3px solid #d4af37; }
+.prata { border: 3px solid #c0c0c0; }
+.bronze { border: 3px solid #cd7f32; }
 
-/* ================= MENÇÃO HONROSA ================= */
+/* ========================== */
+/* 🌟 MENÇÃO HONROSA */
+/* ========================== */
 .mencao {
   max-width: 600px;
   margin: 0 auto 56px;
@@ -179,27 +81,45 @@ h2 {
 }
 
 .mencao .card {
-  border: 2px dashed #bbb;
+  border: 2px dashed var(--muted);
 }
 
 .mencao .card img {
-  height: 260px; /* igual podium */
+  height: 260px;
   object-fit: cover;
 }
 
-/* ================= GALERIA ================= */
+/* ========================== */
+/* 🎨 GALERIA */
+/* ========================== */
 .galeria {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 16px;
 }
 
+.galeria .card {
+  background: var(--card);
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.galeria .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
 .galeria .card img {
+  width: 100%;
   height: 180px;
   object-fit: cover;
 }
 
-/* ================= MODAL ================= */
+/* ========================== */
+/* 🔍 MODAL */
+/* ========================== */
 .modal {
   position: fixed;
   inset: 0;
@@ -210,7 +130,9 @@ h2 {
   z-index: 9999;
 }
 
-.modal.ativo { display: flex; }
+.modal.ativo {
+  display: flex;
+}
 
 #modal-img {
   max-width: 90vw;
@@ -228,34 +150,37 @@ h2 {
   cursor: pointer;
 }
 
-/* ================= IFRAME ================= */
-.iframe-container {
-  width: 100%;
-  max-width: 900px;
-  aspect-ratio: 3/4;
-  margin: 0 auto;
+/* ========================== */
+/* 📱 MOBILE */
+/* ========================== */
+@media (max-width: 600px) {
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .podio {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .podio .card img {
+    height: 220px;
+  }
+
+  .mencao .card img {
+    height: 220px;
+  }
+
+  .galeria .card img {
+    height: 160px;
+  }
 }
 
-.iframe-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* ================= ANIMAÇÕES ================= */
+/* ========================== */
+/* ✨ ANIMAÇÃO */
+/* ========================== */
 @keyframes zoom {
   from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 600px) {
-  h1 { font-size: 1.6rem; }
-  h2 { font-size: 1.1rem; }
-  .menu { gap: 14px; }
-  .menu a { font-size: 0.75rem; }
-  .podio { gap: 16px; margin-bottom: 32px; }
-  .podio .card img { height: 220px; }
-  .mencao .card img { height: 220px; }
-  .galeria .card img { height: 160px; }
 }

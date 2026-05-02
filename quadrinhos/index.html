@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quadrinhos - Dudu & Bubu</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/style/global.css">
+  <link rel="stylesheet" href="/quadrinhos/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- força modo claro -->
+<meta name="color-scheme" content="light dark">
+</head>
+<body>
+  <!-- MENU -->
+  <header class="header">
+  <nav class="menu">
+    <a href="/index.html">Início</a>
+    <a href="/exposition.html">Exposição</a>
+    <a href="/quadrinhos/index.html">Quadrinhos</a>
+    <a href="/sobre.html">Sobre</a>
+    <a href="/jogos.html">Jogos</a>
+  </nav>
+</header>
+
+  <!-- CONTEÚDO -->
+
+<div class="container">
+
+    <header>
+      <h1>Quadrinhos</h1>
+      <p>Escolha uma temporada</p>
+    </header>
+
+    <main>
+      <section class="temporadas">
+
+        <a href="./temporada1/index.html" class="temporada-card">
+          <h2>Temporada 1</h2>
+          <p>Oi, eu sou o Dudu!</p>
+        </a>
+
+        <div class="temporada-card bloqueado">
+          <h2>🔒 Temporada 2</h2>
+          <p>Em breve</p>
+        </div>
+
+        <div class="temporada-card bloqueado">
+          <h2>🔒 Temporada 3</h2>
+          <p>Em breve</p>
+        </div>
+
+      </section>
+      </div>
+    </main>
+
+
+
+  <!-- SCRIPT MENU -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menuLinks");
+      menu.classList.toggle("show");
+    }
+  </script>
+
+</body>
+</html>

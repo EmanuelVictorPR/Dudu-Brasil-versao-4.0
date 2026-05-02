@@ -1,38 +1,48 @@
+/* ========================== */
+/* 🎮 CONTAINER */
+/* ========================== */
 .jogos-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 25px;
-  padding: 40px;
-  max-width: 1000px;
+  padding: 40px 10px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-/* CARD PADRONIZADO */
+/* ========================== */
+/* 🎯 CARD */
+/* ========================== */
 .jogo-card {
-  background: #6c6fbf; /* estilo parecido com Alura */
+  background: var(--card);
   border-radius: 15px;
   overflow: hidden;
   text-decoration: none;
-  color: white;
-  transition: transform 0.2s ease;
+  color: var(--text);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* HOVER */
 .jogo-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-/* THUMB FIXA */
+/* ========================== */
+/* 🖼️ IMAGEM */
+/* ========================== */
 .jogo-card img {
   width: 100%;
-  height: 150px; /* 🔥 TAMANHO FIXO */
-  object-fit: cover; /* corta sem distorcer */
+  height: 150px;
+  object-fit: cover;
   display: block;
 }
 
-/* TEXTO */
+/* ========================== */
+/* 📝 TEXTO */
+/* ========================== */
 .jogo-info {
-  padding: 10px;
+  padding: 12px;
   text-align: center;
 }
 
@@ -42,7 +52,22 @@
 }
 
 .jogo-info p {
-  font-size: 15px;
-  opacity: 0.9;
+  font-size: 13px;
+  color: var(--muted);
 }
 
+/* ========================== */
+/* 📱 MOBILE */
+/* ========================== */
+@media (max-width: 600px) {
+
+  .jogos-container {
+    gap: 16px;
+    padding: 20px 10px;
+  }
+
+  .jogo-card img {
+    height: 130px;
+  }
+
+}

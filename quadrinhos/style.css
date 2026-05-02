@@ -1,0 +1,204 @@
+/* ========================== */
+/* 📦 CONTAINER */
+/* ========================== */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* ========================== */
+/* 🧾 HEADER */
+/* ========================== */
+.page-header {
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+.page-header h1 {
+  margin-bottom: 8px;
+}
+.page-header p {
+  color: var(--muted);
+}
+
+header h1 {
+  font-size: 1.8rem;
+}
+
+header p {
+  color: var(--muted);
+}
+
+/* ========================== */
+/* 📚 TEMPORADAS */
+/* ========================== */
+.temporadas {
+  display: grid;
+  gap: 15px;
+}
+
+.temporada-card {
+  display: block;
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--card);
+  transition: 0.2s;
+}
+
+.temporada-card:hover {
+  transform: scale(1.02);
+}
+
+/* BLOQUEADO */
+.bloqueado {
+  background: #ccc;
+  color: #777;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* ========================== */
+/* 🎬 EPISÓDIOS */
+/* ========================== */
+.episodios {
+  display: grid;
+  gap: 15px;
+}
+
+.episodio-card {
+  display: block;
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--card);
+  transition: 0.2s;
+}
+
+.episodio-card:hover {
+  transform: scale(1.02);
+}
+
+/* ========================== */
+/* 📖 GIBI */
+/* ========================== */
+.comic img {
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+  border-radius: 14px;
+}
+
+/* ========================== */
+/* 🔘 BOTÕES */
+/* ========================== */
+.botao {
+  display: inline-block;
+  background: var(--menu);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.botao:hover {
+  opacity: 0.8;
+}
+
+/* ========================== */
+/* 🔽 FOOTER */
+/* ========================== */
+footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.navegacao {
+  display: flex;
+  gap: 10px;
+}
+
+.navegacao a {
+  flex: 1;
+  background: var(--menu);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.navegacao a:hover {
+  opacity: 0.8;
+}
+
+/* ========================== */
+/* 📱 MOBILE */
+/* ========================== */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* ========================== */
+/* 💻 DESKTOP */
+/* ========================== */
+@media (min-width: 768px) {
+
+  .temporadas {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .episodios {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+/* 🔙 BOTÃO VOLTAR */
+.top-nav {
+  margin: 20px 0;
+}
+
+.voltar-btn {
+  display: inline-block;
+  background: var(--card);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: var(--text);
+  transition: 0.2s;
+}
+
+.voltar-btn:hover {
+  transform: translateX(-3px);
+  opacity: 0.9;
+}
+/* barra de navegação do episódio */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 15px 0 25px;
+}
+
+/* botões */
+.nav-btn {
+  background: var(--card);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: var(--text);
+  transition: 0.2s;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* botão próximo destacado */
+.nav-btn.next {
+  background: #d4b27c;
+}

@@ -1,245 +1,127 @@
-/* ================= GLOBAL.CSS ================= */
-
-/* ================= VARIÁVEIS ================= */
+/* ========================== */
+/* 🎨 VARIÁVEIS (CLARO) */
+/* ========================== */
 :root {
   --bg: #f9f8dc;
-  --card: hsla(42, 58%, 78%, 0.949);
-  --text: #000000;
+  --card: #f3e7c4;
+  --text: #000;
   --muted: #1b1000;
-  --border: rgba(0, 0, 0, 0.08);
-
-  --ouro: #d4af37;
-  --prata: #c0c0c0;
-  --bronze: #cd7f32;
-
-  --accent: #f0f0f0; /* usado em menus, sublinhado */
+  --menu: #c5a96a;
+  --accent: #fff;
 }
 
-/* ================= RESET ================= */
+/* ========================== */
+/* 🌙 DARK MODE */
+/* ========================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1c1c;
+    --card: #2e2e2e;
+    --text: #f5f5f5;
+    --muted: #ccc;
+    --menu: #2a2a2a;
+    --accent: #fff;
+  }
+}
+
+/* ========================== */
+/* 🔧 RESET */
+/* ========================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ================= BASE ================= */
+/* ========================== */
+/* 🌍 BASE */
+/* ========================== */
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.5;
+  font-family: system-ui, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
-  padding: 0;
-}
-
+/* LINKS */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* ================= HEADER / MENU ================= */
+a:visited {
+  color: inherit;
+}
+
+/* ========================== */
+/* 🧭 MENU */
+/* ========================== */
 .header {
   position: sticky;
   top: 0;
-  background: rgba(188, 157, 103, 0.95); /* mesma cor marrom com transparência */
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(133, 41, 41, 0.08);
+  background: var(--menu);
+  z-index: 1000;
 }
 
 .menu {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 10px 16px;
-
+  max-width: 600px;
+  margin: auto;
+  padding: 10px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .menu a {
-  position: relative;
   font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: bold;
   text-transform: uppercase;
-
-  color: var(-muted-);
-  padding: 6px 0;
-  transition: color 0.2s ease;
 }
 
-.menu a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  transition: width 0.25s ease;
-}
+/* ========================== */
+/* 📦 CONTAINER */
+/* ========================== */
 
-.menu a:hover,
-.menu a:focus,
-.menu a:active {
-  color: #fff;
-}
-
-.menu a:hover::after,
-.menu a:focus::after,
-.menu a:active::after {
-  width: 100%;
-}
-
-/* ================= CONTEÚDO ================= */
 main {
-  max-width: 1100px;
-  margin: 48px auto;
-  padding: 0 16px;
-}
+  max-width: 600px;
+  margin: 50px auto 30px;
+  padding: 20px 15px;
 
-h1 {
-  font-size: 2rem;
+  min-height: calc(100vh - 80px); /* 🔥 resolve tudo */
+}
+.page-header {
+  margin-bottom: 25px;
   text-align: center;
-  margin-bottom: 12px;
+  
 }
 
-h2 {
-  font-size: 1.3rem;
-  color: var(--muted);
-  margin-bottom: 16px;
+body {
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+h1, h2 {
+  font-weight: 700;
 }
 
-.subtitulo {
-  text-align: center;
-  color: var(--muted);
-  margin-bottom: 40px;
+p {
+  font-weight: 400;
 }
 
-/* ================= CARDS / GALERIAS ================= */
-.card,
-.item,
-.quadrinho {
-  background: var(--card);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.card:hover,
-.item:hover,
-.quadrinho:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.card img,
-.item img,
-.quadrinho img {
-  width: 100%;
+html, body {
   height: 100%;
-  object-fit: cover;
-  display: block;
 }
 
-.titulo {
-  font-size: 1.05rem;
-  margin-top: 10px;
-}
+@media (prefers-color-scheme: dark) {
 
-.autor {
-  font-size: 0.9rem;
-  color: var(--muted);
-}
+  :root {
+    --bg: #1f1a14;        /* marrom bem escuro */
+    --card: #2a231b;      /* card levemente mais claro */
+    --text: #f5e6c8;      /* bege claro */
+    --muted: #cbbba0;     /* bege suave */
+    --menu: #3a2f22;      /* marrom do menu */
+  }
 
-/* Medalhas */
-.ouro { border: 3px solid var(--ouro); }
-.prata { border: 3px solid var(--prata); }
-.bronze { border: 3px solid var(--bronze); }
+  .header {
+    background: var(--menu);
+  }
 
-/* ================= GALERIA GRID ================= */
-.galeria,
-.podio,
-.mencao,
-.quadrinhos-grid,
-.destaques {
-  display: grid;
-  gap: 16px;
-}
 
-/* Grades específicas */
-.galeria { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-.podio { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); max-width: 1000px; margin: 0 auto 56px; }
-.mencao { max-width: 600px; margin: 0 auto 56px; }
-.quadrinhos-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
-.destaques { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin: 48px 0; }
-
-/* ================= MODAL ================= */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.modal.ativo { display: flex; }
-
-#modal-img {
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: 12px;
-  animation: zoom 0.25s ease;
-}
-
-.modal-fechar {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  font-size: 2.2rem;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* ================= IFRAME ================= */
-.iframe-container {
-  width: 100%;
-  max-width: 900px;
-  aspect-ratio: 3/4;
-  margin: 0 auto;
-}
-
-.iframe-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* ================= TIPOGRAFIA PARA SOBRE ================= */
-.manifesto,
-.conteudo p,
-.bloco p {
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* ================= ANIMAÇÕES ================= */
-@keyframes zoom {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 600px) {
-  h1 { font-size: 1.6rem; }
-  .menu { gap: 14px; }
-  .menu a { font-size: 0.75rem; }
-  .quadrinhos-grid { gap: 24px; }
-  .iframe-container { aspect-ratio: 2/3; }
 }
